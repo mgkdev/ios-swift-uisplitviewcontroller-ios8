@@ -51,13 +51,13 @@ class MasterViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showDetail" {
             if let indexPath = self.tableView.indexPathForSelectedRow() {
-                let object = objects[indexPath.row] as NSDate
+                let object = objects[indexPath.row] as! NSDate
                 var controller: DetailViewController
                 
                 if let nav = segue.destinationViewController as? UINavigationController {
-                    controller = nav.topViewController as DetailViewController
+                    controller = nav.topViewController as! DetailViewController
                 } else {
-                    controller = segue.destinationViewController as DetailViewController
+                    controller = segue.destinationViewController as! DetailViewController
                 }
                 
                 controller.detailItem = object
@@ -76,10 +76,10 @@ class MasterViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
 
-        let object = objects[indexPath.row] as NSDate
-        cell.textLabel.text = object.description
+        let object = objects[indexPath.row] as! NSDate
+        cell.textLabel!.text = object.description
         return cell
     }
 

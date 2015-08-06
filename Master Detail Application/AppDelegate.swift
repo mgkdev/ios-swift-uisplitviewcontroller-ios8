@@ -60,14 +60,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     
     func splitViewController(splitViewController: UISplitViewController, willHideViewController aViewController: UIViewController, withBarButtonItem barButtonItem: UIBarButtonItem, forPopoverController pc: UIPopoverController) {
         if !splitViewController.respondsToSelector(Selector("displayModeButtonItem")) {
-            let nav = splitViewController.viewControllers.last as UINavigationController
+            let nav = splitViewController.viewControllers.last as! UINavigationController
             nav.topViewController.navigationItem.setLeftBarButtonItem(barButtonItem, animated: true)
         }
     }
     
     func splitViewController(splitViewController: UISplitViewController, willShowViewController aViewController: UIViewController, invalidatingBarButtonItem barButtonItem: UIBarButtonItem) {
         if !splitViewController.respondsToSelector(Selector("displayModeButtonItem")) {
-            let nav = splitViewController.viewControllers.last as UINavigationController
+            let nav = splitViewController.viewControllers.last as! UINavigationController
             nav.topViewController.navigationItem.setLeftBarButtonItem(nil, animated: true)
         }
     }
